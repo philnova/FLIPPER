@@ -609,7 +609,7 @@ def ThirdWindow():
         except IOError:
             pass
         
-        if proceed == True:
+        if proceed:
 
             if barplot:
                 ft.replicatePlot(reps, ANALYSIS_NAME+'_barplot')
@@ -658,43 +658,45 @@ def ThirdWindow():
 #Main Loops#
 ############
 
-SCREEN = 0
+if __name__ == "__main__":
 
-if SCREEN==0:
-    StartWindow()
+    SCREEN = 0
 
-while SCREEN == 1:
-    if ft.NCOL>12 or ft.NROW > 8:
-        PLATE_FORMAT = 384
-        SCREEN+=1
-    elif ft.NCOL>8 or ft.NROW > 6:
-        PLATE_FORMAT = 96
-        SCREEN+=1
-    elif ft.NCOL == 8 and ft.NROW == 4:
-        PLATE_FORMAT = 96
-        SCREEN+=1
+    if SCREEN==0:
+        StartWindow()
+
+    while SCREEN == 1:
+        if ft.NCOL>12 or ft.NROW > 8:
+            PLATE_FORMAT = 384
+            SCREEN+=1
+        elif ft.NCOL>8 or ft.NROW > 6:
+            PLATE_FORMAT = 96
+            SCREEN+=1
+        elif ft.NCOL == 8 and ft.NROW == 4:
+            PLATE_FORMAT = 96
+            SCREEN+=1
+        else:
+            root=Tk()
+            window=PlateFormatWindow(root)
+            root.mainloop()
+
+    if PLATE_FORMAT == 48:
+        PLATE_ROWS = 6
+        PLATE_COLS = 8
+    elif PLATE_FORMAT == 96:
+        PLATE_ROWS = 8
+        PLATE_COLS = 12
     else:
-        root=Tk()
-        window=PlateFormatWindow(root)
-        root.mainloop()
+        PLATE_ROWS = 16
+        PLATE_COLS = 24
 
-if PLATE_FORMAT == 48:
-    PLATE_ROWS = 6
-    PLATE_COLS = 8
-elif PLATE_FORMAT == 96:
-    PLATE_ROWS = 8
-    PLATE_COLS = 12
-else:
-    PLATE_ROWS = 16
-    PLATE_COLS = 24
-
-if SCREEN == 2:
-    SecondWindow()
+    if SCREEN == 2:
+        SecondWindow()
 
 
-reps = ft.replicateMaker2(indivs, replicates, indiv_as_rep)
+    reps = ft.replicateMaker2(indivs, replicates, indiv_as_rep)
 
 
 
-if SCREEN==3:
-    ThirdWindow()
+    if SCREEN==3:
+        ThirdWindow()
