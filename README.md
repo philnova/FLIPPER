@@ -13,11 +13,11 @@ To facilitate these tasks, I have developed two tools:
 1) simple_flipr: a command-line tool
 2) flipr_tdt_gui: a GUI-based tool
 
-SIMPLE FLIPR
+##SIMPLE FLIPR
 
 simple_flipr.py has no dependencies and can be run directly from the command line. The purpose of simple_flipr is to organize plate read data into a convenient format for further analysis, i.e. with a spreadsheet or other script. See the file itself for detailed documentation.
 
-FLIPR_TDT_GUI
+##FLIPR_TDT_GUI
 
 flipr_tdt_gui requires Tkinter and my script flipr_tdt as dependencies. It is compatible with Python 3 or 2.7.
 
